@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"arminzheng.com","root":"/","images":"/images","scheme":"Muse","version":"8.2.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
+  </script>
+<meta name="description" content="总体思路 网络接口层  0、1电信号 以太网协议 帧 Frame（以太数据包）: 标头head 18 B （头部14 + 尾部：冗余校验码FCS 4）Frame check sequence  数据data 46 ~ 1500 B （数据很长就分多个帧）（总共64 ~ 1518 B）  前同步码：用来使接收端的适配器在接收 MAC 帧时能够迅速调整时钟频率，使它和发送端的频率相同。前同步码为 7">
+<meta property="og:type" content="article">
+<meta property="og:title" content="互联网协议">
+<meta property="og:url" content="https://arminzheng.com/2021/08/18/%E4%BA%92%E8%81%94%E7%BD%91%E5%8D%8F%E8%AE%AE/index.html">
+<meta property="og:site_name" content="阿明">
+<meta property="og:description" content="总体思路 网络接口层  0、1电信号 以太网协议 帧 Frame（以太数据包）: 标头head 18 B （头部14 + 尾部：冗余校验码FCS 4）Frame check sequence  数据data 46 ~ 1500 B （数据很长就分多个帧）（总共64 ~ 1518 B）  前同步码：用来使接收端的适配器在接收 MAC 帧时能够迅速调整时钟频率，使它和发送端的频率相同。前同步码为 7">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210422230342452.png">
+<meta property="og:image" content="https://www.ruanyifeng.com/blogimg/asset/201205/bg2012052912.png">
+<meta property="og:image" content="https://www.ruanyifeng.com/blogimg/asset/201205/bg2012052913.png">
+<meta property="og:image" content="https://www.ruanyifeng.com/blogimg/asset/201206/bg2012061107.png">
+<meta property="og:image" content="https://img-blog.csdn.net/20180208112533496">
+<meta property="og:image" content="https://img-blog.csdn.net/2018091917061915?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xlbmd4aWFvMTk5Mw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20181125120454105.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2EyOTg4YQ==,size_16,color_FFFFFF,t_70">
+<meta property="article:published_time" content="2021-08-17T19:30:27.312Z">
+<meta property="article:modified_time" content="2021-08-17T19:30:27.312Z">
+<meta property="article:author" content="Armin Zheng">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20210422230342452.png">
+
+
+<link rel="canonical" href="https://arminzheng.com/2021/08/18/%E4%BA%92%E8%81%94%E7%BD%91%E5%8D%8F%E8%AE%AE/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+<title>互联网协议 | 阿明</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">阿明</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%BB%E4%BD%93%E6%80%9D%E8%B7%AF"><span class="nav-number">1.</span> <span class="nav-text">总体思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E8%A7%92%E5%BA%A6"><span class="nav-number">2.</span> <span class="nav-text">用户角度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B"><span class="nav-number">3.</span> <span class="nav-text">三次握手</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Armin Zheng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://arminzheng.com/2021/08/18/%E4%BA%92%E8%81%94%E7%BD%91%E5%8D%8F%E8%AE%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Armin Zheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阿明">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          互联网协议
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-08-18 03:30:27" itemprop="dateCreated datePublished" datetime="2021-08-18T03:30:27+08:00">2021-08-18</time>
+    </span>
+
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>2.4k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>2 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h4 id="总体思路"><a href="#总体思路" class="headerlink" title="总体思路"></a>总体思路</h4><ul>
+<li><p>网络接口层</p>
+<ul>
+<li>0、1电信号</li>
+<li>以太网协议</li>
+<li>帧 Frame（以太数据包）:<ul>
+<li><p>标头head 18 B （头部14 + 尾部：冗余校验码FCS 4）Frame check sequence<br><img src="https://img-blog.csdnimg.cn/20210422230342452.png" alt="以太帧结构（格式）"></p>
+</li>
+<li><p>数据data 46 ~ 1500 B （数据很长就分多个帧）（总共64 ~ 1518 B）</p>
+</li>
+<li><p>前同步码：用来使接收端的适配器在接收 MAC 帧时能够迅速调整时钟频率，使它和发送端的频率相同。前同步码为 7 个字节，1 和 0 交替。</p>
+</li>
+<li><p>帧开始定界符：帧的起始符，为 1 个字节。前 6 位 1 和 0 交替，最后的两个连续的 1 表示告诉接收端适配器：“帧信息要来了，准备接收”。</p>
+</li>
+</ul>
+</li>
+<li>MAC地址：48位 = 6 B = 12个十六进制数表示（6对），前6个十六进制（3对）是厂家编号，后6个（3对）是该厂家的网卡流水号（用来定位网卡和数据包的路径）</li>
+<li>ARP 协议：网卡知道网卡的MAC地址<ul>
+<li>所查询主机的IP，在对方MAC地址一栏填的是 FF:FF:FF:FF，表示这是一个广播</li>
+<li>它所在子网络的每一台主机，都会收到这个数据包，从中取出IP地址，与自身的IP地址进行比较。如果两者相同，都做出回复，向对方报告自己的MAC地址，否则就丢弃这个包。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>网络层</p>
+<ul>
+<li>网络地址（子网络）</li>
+<li>IP 协议（32 位）<ul>
+<li>子网掩码（ip AND 掩码 == 网络部分）</li>
+</ul>
+</li>
+<li>IP 数据包<ul>
+<li>Head: 20~60</li>
+<li>Data: 65535 - Head</li>
+<li>标头和数据放进帧的数据里面（可以分多个帧）</li>
+</ul>
+</li>
+<li><strong>“网络层”的功能是建立”主机到主机”的通信。</strong></li>
+</ul>
+</li>
+<li><p>传输层</p>
+<ul>
+<li><p>端口：不管是浏览网页还是在线聊天，应用程序会随机选用一个端口，然后与服务器的相应端口联系。</p>
+</li>
+<li><p><strong>“传输层”的功能，就是建立”端口到端口”的通信。</strong></p>
+</li>
+<li><p><strong>只要确定主机和端口，我们就能实现程序之间的交流。</strong>主机+端口，叫做”套接字”（socket）。</p>
+</li>
+<li><p>UDP协议</p>
+<ul>
+<li>UDP数据包，也是由”标头”和”数据”两部分组成。</li>
+<li>“标头”部分主要定义了发出端口和接收端口 8 字节Bit</li>
+<li>“数据”部分就是具体的内容。总长度不超过65535字节Bit</li>
+</ul>
+<p><img src="https://www.ruanyifeng.com/blogimg/asset/201205/bg2012052912.png" alt="img"></p>
+<ul>
+<li>以太数据包 头 + IP数据包 头 + UDP 数据包 头</li>
+</ul>
+</li>
+<li><p>TCP协议</p>
+<ul>
+<li>有确认机制的UDP协议，每发出一个数据包都要求确认。如果有一个数据包遗失，就收不到确认，发出方就知道有必要重发这个数据包了。</li>
+<li>TCP数据包和UDP数据包一样，都是内嵌在IP数据包的”数据”部分。TCP数据包没有长度限制，理论上可以无限长，但是为了保证网络的效率，通常TCP数据包的长度不会超过IP数据包的长度，以确保单个TCP数据包不必再分割。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>应用层</p>
+<ul>
+<li>TCP协议可以为各种各样的程序传递数据，比如Email、WWW、FTP等等。那么，必须有不同协议规定电子邮件、网页、FTP数据的格式，这些应用程序协议就构成了”应用层”。<br><img src="https://www.ruanyifeng.com/blogimg/asset/201205/bg2012052913.png" alt="img"></li>
+</ul>
+</li>
+</ul>
+<h4 id="用户角度"><a href="#用户角度" class="headerlink" title="用户角度"></a>用户角度</h4><ul>
+<li>以太网标头需要知道：<ul>
+<li>对方的MAC地址</li>
+<li>对方的IP地址</li>
+</ul>
+</li>
+<li>但不在同一子网，无法知道对方MAC地址，必须通过Gateway网关转发</li>
+<li>上网设置<ul>
+<li>静态IP地址<ul>
+<li>本机的IP地址<br>　　* 子网掩码<ul>
+<li>网关的IP地址</li>
+<li>DNS的IP地址</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>动态IP地址<ul>
+<li>DHCP协议（应用层协议）<ul>
+<li>不知道对面的MAC地址：就设置对方MAC地址为广播地址（FF-FF-FF-FF-FF-FF）</li>
+<li>我方对方的IP地址都不知道：就设置我方：0.0.0.0；对方255.255.255.255</li>
+<li>双方端口：协议规定好了，我方：68，对方：67</li>
+<li>由于MAC地址是广播，每个都收到，但IP地址是0….、255….DHCP知道 ”这是发给我的“ ，其他计算机都丢弃。</li>
+<li>DHCP服务器读出数据，分配好IP，发回一个DHCP响应包<ul>
+<li>结构为：以太网标头的MAC地址是双方的网卡地址，IP标头的IP地址是DHCP服务器的IP地址（发出方）和255.255.255.255（接收方），UDP标头的端口是67（发出方）和68（接收方），分配给请求端的IP地址和本网络的具体参数则包含在Data部分。</li>
+<li>计算机收到响应包，就知道了自己的IP地址、子网掩码、网关地址、DNS服务器等参数。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>实例：访问一个网站<ul>
+<li><p>DNS协议：已知DNS服务器为8.8.8.8，于是我们向这个地址发送一个DNS数据包，53 端口。网址会转换为IP地址，得到响应，我们就知道对方的IP地址。</p>
+</li>
+<li><p>子网掩码，判断是否为一个网段，不为一个网段，就必须通过网关的转发，于是接收方MAC地址将是本机网关的MAC地址。</p>
+</li>
+<li><p>应用层协议：HTTP协议。请求头请求体等，假定长度为4960字节，将会被嵌入到TCP数据包中。</p>
+</li>
+<li><p>TCP协议：接收方默认端口为80端口，本机端口是一个随机生成的1024~65535之间的整数，假定为51755。加入一个TCP数据包 20字节，总大小+20，4980字节</p>
+</li>
+<li><p>IP协议：TCP数据包嵌入IP数据包，会设置双方IP地址。IP数据包的标头长度为20字节，加上嵌入的TCP数据包，总长度变为5000字节。</p>
+</li>
+<li><p>以太网协议：IP数据包嵌入以太数据包，需要设置MAC地址，设置本机MAC地址，接收方设置为网关192.168.1.1的MAC地址（通过ARP协议得到，也就是广播获得的MAC地址）<br><img src="https://www.ruanyifeng.com/blogimg/asset/201206/bg2012061107.png" alt="image"></p>
+</li>
+<li><p>服务端响应</p>
+<ul>
+<li>通过多个网关转发，网站服务器收到4个以太网数据包。</li>
+<li>根据IP标头的序号，将4个包拼起来，读取出完整的TCP数据包，读出请求，作出响应，再用TCP协议发回来。</li>
+<li>本机收到响应后，就可以将网页显示出来了，通信完成。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://img-blog.csdn.net/20180208112533496" alt="在这里插入图片描述"></p>
+<h4 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h4><ul>
+<li>SYN(synchronous建立连接) （标志位 1 bit）    最后一次握手SYN不为1是不消耗序号的 </li>
+<li>ACK(acknowledgement 确认) </li>
+<li>PSH(push传送) </li>
+<li>FIN(finish结束) </li>
+<li>RST(reset重置) </li>
+<li>URG(urgent紧急)</li>
+</ul>
+<p>以上是标志位</p>
+<hr>
+<p>以下是序号和确认号</p>
+<ul>
+<li>Sequence number (seq 序号) </li>
+<li>Acknowledge number (AN 确认号) 是对方的序号。如果占用己方序号和对方确认号都加一</li>
+<li>ack确认报文段不占用<strong>序号</strong>，只有三种情况需要占用<ul>
+<li>1、syn=1</li>
+<li>2、fin=1</li>
+<li>3、携带数据一个字节占用一个序号</li>
+</ul>
+</li>
+<li>序号和确认号是相对的，seq表示上次发送的数据量，an代表上次接收的数据量（都是累加还算上初始值）</li>
+</ul>
+<p><img src="https://img-blog.csdn.net/2018091917061915?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xlbmd4aWFvMTk5Mw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="TCP包结构图"></p>
+<hr>
+<p><img src="https://img-blog.csdnimg.cn/20181125120454105.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2EyOTg4YQ==,size_16,color_FFFFFF,t_70" alt="img"></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/08/18/hello-world/" rel="prev" title="Hello World">
+                  <i class="fa fa-chevron-left"></i> Hello World
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/08/18/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/" rel="next" title="函数式编程">
+                  函数式编程 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Armin Zheng</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="Symbols count total">3k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">3 mins.</span>
+  </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
