@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="arminzheng">
+    
+    <title>
+        
+            使用注解实现数据字典翻译 |
+        
+        Armin&#39;s Blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/favicon.ico">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"arminzheng.com","root":"/","language":"en","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/1000.jpg","favicon":"/favicon.ico","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"Keep moving, don't settle."},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":false}}},"local_search":{"enable":true,"preload":false},"code_copy":{"enable":true,"style":"mac"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"3.4.3"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                Armin&#39;s Blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                TAGS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               target="_blank" rel="noopener" href="https://daily.arminzheng.com"
+                            >
+                                WALLPAPER
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                LINKS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                ABOUT
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">TAGS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       target="_blank" rel="noopener" href="https://daily.arminzheng.com">WALLPAPER</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">LINKS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">ABOUT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">使用注解实现数据字典翻译</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/1000.jpg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">arminzheng</span>
+                        
+                            <span class="author-label">Lv2</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;
+        <span class="pc">2022-02-03 09:46:08</span>
+        <span class="mobile">2022-02-03 09:46</span>
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E7%81%B5%E6%84%9F/">灵感</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/springboot/">springboot</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>1.3k Words</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>6 Mins</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在日常开发中查询单表的情况非常多。这时总会出现表里存的是编码（如部门编号），但却要返回对应的描述（如部门名称）。</p>
+<p>通常一般思路是在 Service 进行关联查询或依赖组件完成。比如 Mybatis 中用 join 语句将 sql 写死，比如 JPA 中在实体类属性字段加上@ManyToOne注解，直接将对象组合起来。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> String orgId;</span><br><span class="line"><span class="meta">@ManyToOne(fetch = FetchType.EAGER)</span></span><br><span class="line"><span class="meta">@JoinColumn(name = &quot;orgId&quot;, insertable = false, updatable = false)</span></span><br><span class="line"><span class="keyword">private</span> BaseOrg baseOrg;</span><br></pre></td></tr></table></figure>
+
+<p>上面的方式固然简单直接，但是我觉得还不够快，而且过度依赖组件在以后的修改中也会比较麻烦，接下来就由我来提供一种新的思路。</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>无论是列表还是单个查询，本质上是先找到编码，再去找对应描述，首要条件就是：顺序不能颠倒，我们不能进行预判。所以我们的任务就像一条流水线一样，得到数据进行查询，再返回填充。如果是列表，那就遍历一遍，时间复杂度O(n)。</p>
+<p>而这样一个过程其实是非常模范的，容易提炼出来。我起先的思路是结合Spring的切面来做，可深度考虑后发现切面只能针对方法的调用，而方法的返回值有很多种，单个对象、List以及IPage分页等。放在 set() 方法上也没有办法得到该 set() 对应的实体再填充。后面转换思路写为工具类在所需要的地方进行调用，一切都简单了不少。比如加入到 MP 的分页转换过程中（ <code>IPage &lt;PO&gt;</code> to <code>IPage &lt;VO&gt;</code>）。</p>
+<p>工具类的思路确定了。我们剩下还需要的。1是查询对应的编码所需要的单表查询Service，2是填充的属性名称（如果是Json动态添加一个JsonElement就不需要在VO再加一个属性，但考虑到我们的业务层或许也需要该字段，就添个属性用来存放）。接下来就开工。</p>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><h3 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h3><ul>
+<li>@Dict 包含填充目标属性，和调用的service</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Retention(RetentionPolicy.RUNTIME)</span></span><br><span class="line"><span class="meta">@Target(ElementType.FIELD)</span></span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> Dict &#123;</span><br><span class="line">  <span class="function">String <span class="title">target</span><span class="params">()</span></span>;</span><br><span class="line">  <span class="function">String <span class="title">service</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>视图对象VO</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@NoArgsConstructor</span></span><br><span class="line"><span class="meta">@ApiModel(value = &quot;员工VO&quot;, description = &quot;EmployeeVO&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EmployeeVO</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line">  <span class="comment">/** 名称 */</span></span><br><span class="line">  <span class="meta">@ApiModelProperty(&quot;名称&quot;)</span></span><br><span class="line">  <span class="keyword">private</span> String name;</span><br><span class="line">  <span class="comment">/** 编号 */</span></span><br><span class="line">  <span class="meta">@ApiModelProperty(&quot;编号&quot;)</span></span><br><span class="line">  <span class="keyword">private</span> String number;</span><br><span class="line">  <span class="comment">/** 所属机构代码 */</span></span><br><span class="line">  <span class="meta">@ApiModelProperty(&quot;所属机构代码&quot;)</span></span><br><span class="line">  <span class="meta">@Dict(target = &quot;orgName&quot;, service = &quot;baseOrgService&quot;)</span></span><br><span class="line">  <span class="keyword">private</span> String orgCode;</span><br><span class="line">  <span class="comment">/** 所属机构 */</span></span><br><span class="line">  <span class="meta">@ApiModelProperty(&quot;所属机构&quot;)</span></span><br><span class="line">  <span class="keyword">private</span> String orgName;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">EmployeeVO</span><span class="params">(EmployeePO po)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = po.getName();</span><br><span class="line">    <span class="keyword">this</span>.number = po.getNumber();</span><br><span class="line">    <span class="keyword">this</span>.orgCode = po.getOrgCode();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>进行翻译的工具类</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BeanHelpUtils</span> </span>&#123;</span><br><span class="line"><span class="comment">/// 主要代码 ⬇️</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function"><span class="keyword">void</span> <span class="title">translation</span><span class="params">(T t)</span></span></span><br><span class="line"><span class="function">      <span class="keyword">throws</span> IntrospectionException, InvocationTargetException, IllegalAccessException </span>&#123;</span><br><span class="line">    Field[] fields = t.getClass().getDeclaredFields();</span><br><span class="line">    <span class="keyword">for</span> (Field field : fields) &#123;</span><br><span class="line">      <span class="keyword">if</span> (field.isAnnotationPresent(Dict.class)) &#123;</span><br><span class="line">        String target = field.getAnnotation(Dict.class).target();</span><br><span class="line">        String service = field.getAnnotation(Dict.class).service();</span><br><span class="line">        DictService dictService = SpringContextUtil.getBean(service, DictService.class);</span><br><span class="line">        <span class="keyword">if</span> (dictService != <span class="keyword">null</span>) &#123;</span><br><span class="line">          PropertyDescriptor source = <span class="keyword">new</span> PropertyDescriptor(field.getName(), t.getClass());</span><br><span class="line">          Object invoke = source.getReadMethod().invoke(t);</span><br><span class="line">          <span class="keyword">if</span> (invoke <span class="keyword">instanceof</span> String) &#123;</span><br><span class="line">            Object result = dictService.getValue((String) invoke);</span><br><span class="line">            PropertyDescriptor targetResult = <span class="keyword">new</span> PropertyDescriptor(target, t.getClass());</span><br><span class="line">            targetResult.getWriteMethod().invoke(t, result);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="comment">/// 主要代码 ⬆️</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function"><span class="keyword">void</span> <span class="title">translation</span><span class="params">(List&lt;T&gt; collect)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (T t : collect) &#123;</span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">        translation(t);</span><br><span class="line">      &#125; <span class="keyword">catch</span> (IntrospectionException | InvocationTargetException | IllegalAccessException e) &#123;</span><br><span class="line">        <span class="keyword">if</span> (log.isInfoEnabled()) log.info(e.getMessage());</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">/** 分页复制 */</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> &lt;T, E&gt; <span class="function">IPage&lt;T&gt; <span class="title">pageTransform</span><span class="params">(IPage&lt;E&gt; page, Function&lt;E, T&gt; sup)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (page == <span class="keyword">null</span> || page.getRecords() == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    List&lt;T&gt; collect = page.getRecords().stream().map(sup).collect(Collectors.toList());</span><br><span class="line">    translation(collect);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Page&lt;T&gt;(page.getCurrent(), page.getSize(), page.getTotal()).setRecords(collect);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>为了能进行统一调用，写了一个 DictService 字典接口</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">DictService</span> </span>&#123;</span><br><span class="line">  <span class="function">Object <span class="title">getValue</span><span class="params">(String key)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>实现了字典接口的 OrgService</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BaseOrgService</span> <span class="keyword">extends</span> <span class="title">ServiceImpl</span>&lt;<span class="title">BaseOrgMapper</span>, <span class="title">BaseOrgPO</span>&gt; <span class="keyword">implements</span> <span class="title">DictService</span> </span>&#123;</span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> Object <span class="title">getValue</span><span class="params">(String orgCode)</span> </span>&#123;</span><br><span class="line">    BaseOrgPO po =</span><br><span class="line">        baseMapper.selectOne(</span><br><span class="line">            <span class="keyword">new</span> QueryWrapper&lt;BaseOrgPO&gt;()</span><br><span class="line">                .lambda()</span><br><span class="line">                .eq(BaseOrgPO::getOrgCode, orgCode)</span><br><span class="line">                .last(<span class="string">&quot;LIMIT 1&quot;</span>));</span><br><span class="line">    <span class="keyword">if</span> (po == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">return</span> po.getOrgName();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>获取 Bean 的工具类，使用了 Spring 的 ApplicationContextAware</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SpringContextUtil</span> <span class="keyword">implements</span> <span class="title">ApplicationContextAware</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> ApplicationContext applicationContext;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setApplicationContext</span><span class="params">(<span class="meta">@NonNull</span> ApplicationContext applicationContext)</span></span></span><br><span class="line"><span class="function">      <span class="keyword">throws</span> BeansException </span>&#123;</span><br><span class="line">    SpringContextUtil.applicationContext = applicationContext;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ApplicationContext <span class="title">getApplicationContext</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> applicationContext;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getProperty</span><span class="params">(String path)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> applicationContext.getEnvironment().getProperty(path);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Object <span class="title">getBean</span><span class="params">(String name)</span> <span class="keyword">throws</span> BeansException </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (applicationContext == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">return</span> applicationContext.getBean(name);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">T <span class="title">getBean</span><span class="params">(String name, Class&lt;T&gt; requiredType)</span> <span class="keyword">throws</span> BeansException </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (applicationContext == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">return</span> applicationContext.getBean(name, requiredType);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在所需要的地方应用</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 调用分页转换，自动翻译</span></span><br><span class="line">...</span><br><span class="line">IPage&lt;EmployeePO&gt; poPage = employeeMapper.selectPage(page, <span class="keyword">new</span> QueryWrapper&lt;EmployeePO&gt;().lambda()</span><br><span class="line">                .eq(...</span><br><span class="line"><span class="keyword">return</span> BeanHelpUtils.pageTransform(poPage, EmployeeVO::<span class="keyword">new</span>);</span><br><span class="line"><span class="comment">// 或直接调用翻译</span></span><br><span class="line">List&lt;EmployeeVO&gt; records = poPage.getRecords();</span><br><span class="line">BeanHelpUtils.translation(records);</span><br><span class="line"><span class="keyword">return</span> records;</span><br></pre></td></tr></table></figure>
+
+<h2 id="数据字典缓存"><a href="#数据字典缓存" class="headerlink" title="数据字典缓存"></a>数据字典缓存</h2><p>由于我一开始提到的是数据字典，其实数据字典通常是一张或者两张表，用来存放编码和对应值，如：</p>
+<p>A表存放：gender ｜ 性别</p>
+<p>B表存放：gender ｜ 1 ｜ 男 、 gender ｜ 2 ｜ 女 ；</p>
+<p>（全部放在一张表也行，可根据数据复杂度而定）</p>
+<p>最后通过单表的字段值 1 来进行数据字典表查找。有时候数据字典会有很多其他别名，如标准码、标准代码，多见于专业领域。</p>
+<p>由于数据字典表的特性，在写入之后，很少会去修改，非常适合结合Redis来进行缓存，提高查询数据。</p>
+<p>我们可以在对应数据字典的Service层接入 Spring Cache + Redis 来进行缓存。</p>
+<p>（完）</p>
+
+        </div>
+
+        
+
+        
+            <ul class="post-tags-box">
+                
+                    <li class="tag-item">
+                        <a href="/tags/springboot/">#springboot</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2022/04/26/Source%20Map/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Source Map</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2022/01/18/%E4%BD%BF%E7%94%A8%20oh-my-zsh%20%E7%9A%84%20git%20%E5%88%AB%E5%90%8D/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">使用 oh-my-zsh 的 git 别名</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>
+              -
+            
+            2024&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">arminzheng</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+            </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0"><span class="nav-number">3.</span> <span class="nav-text">实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E8%A7%A3"><span class="nav-number">3.1.</span> <span class="nav-text">注解</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%AD%97%E5%85%B8%E7%BC%93%E5%AD%98"><span class="nav-number">4.</span> <span class="nav-text">数据字典缓存</span></a></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+
+    
+<script src="/js/code-copy.js"></script>
+
+
+
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+<div class="post-scripts pjax">
+    
+        
+<script src="/js/left-side-toggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/toc.js"></script>
+
+    
+</div>
+
+
+    
+<script src="/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

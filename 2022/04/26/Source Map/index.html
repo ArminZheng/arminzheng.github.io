@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="arminzheng">
+    
+    <title>
+        
+            Source Map |
+        
+        Armin&#39;s Blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/favicon.ico">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"arminzheng.com","root":"/","language":"en","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/1000.jpg","favicon":"/favicon.ico","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"Keep moving, don't settle."},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":false}}},"local_search":{"enable":true,"preload":false},"code_copy":{"enable":true,"style":"mac"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"3.4.3"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                Armin&#39;s Blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                TAGS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               target="_blank" rel="noopener" href="https://daily.arminzheng.com"
+                            >
+                                WALLPAPER
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                LINKS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                ABOUT
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">TAGS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       target="_blank" rel="noopener" href="https://daily.arminzheng.com">WALLPAPER</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">LINKS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">ABOUT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">Source Map</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/1000.jpg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">arminzheng</span>
+                        
+                            <span class="author-label">Lv2</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;
+        <span class="pc">2022-04-26 14:17:00</span>
+        <span class="mobile">2022-04-26 14:17</span>
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/study/">study</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>910 Words</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>3 Mins</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h2 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h2><p>通常 js 脚本 在通过诸如 webpack 等打包压缩后，会变成仅一行的 js 文件，这样带来几点好处：</p>
+<ol>
+<li>压缩，减少体积（jquery.min.js 能压缩十倍文件大小）</li>
+<li>多个文件合并成一个，能在第一次访问时候减少 js 文件请求数</li>
+<li>将其他脚本编译成 JavaScript 脚本供页面使用</li>
+</ol>
+<p>但同时也带了一个新的问题：我们的 debug，诸如 console.log 和 报错信息 等，控制台无法输出<strong>正确的源码位置</strong>。由此 Source Map 应运而生。</p>
+<p>Source Map 就是 源码 和对应 压缩成仅一行后的 js 代码 的对照文件</p>
+<h2 id="源码转换"><a href="#源码转换" class="headerlink" title="源码转换"></a>源码转换</h2><ol>
+<li><p>压缩后：<a class="link"   target="_blank" rel="noopener" href="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" >jquery.min.js 例子<i class="fas fa-external-link-alt"></i></a></p>
+</li>
+<li><p>Source Map：<a class="link"   target="_blank" rel="noopener" href="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.map" >jquery.min.map 例子<i class="fas fa-external-link-alt"></i></a></p>
+</li>
+</ol>
+<p>可以看到 <code>如1所示</code> 压缩后的 jquery.min.js 文件有两行：一行 js 脚本 + 一行注释</p>
+<p>其中第二行注释内容：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//@ sourceMappingURL=jquery.min.map</span></span><br></pre></td></tr></table></figure>
+
+<p>这是一种固定格式：告诉我们将 URL 链接中的 jquery.min.js 替换为 jquery.min.map，即可得到 Source Map 文件。这不关是告诉我们，同时也是告诉浏览器如何输出<strong>正确的源码位置</strong>。</p>
+<h2 id="Source-Map-文件格式"><a href="#Source-Map-文件格式" class="headerlink" title="Source Map 文件格式"></a>Source Map 文件格式</h2><p>固定由一个对象组成，里面包含 6 个属性（5 个必填）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="comment">// 版本</span></span><br><span class="line">  version : <span class="number">3</span>,</span><br><span class="line">  <span class="comment">// 转换后的文件名</span></span><br><span class="line">  file: <span class="string">&quot;out.js&quot;</span>,</span><br><span class="line">  <span class="comment">// 转换前的文件所在的目录。如果与转换前的文件在同一目录，该项为空或忽悠</span></span><br><span class="line">  sourceRoot : <span class="string">&quot;&quot;</span>,</span><br><span class="line">  <span class="comment">// 转换前的文件。该项是一个数组，表示可能存在多个文件合并</span></span><br><span class="line">  sources: [<span class="string">&quot;foo.js&quot;</span>, <span class="string">&quot;bar.js&quot;</span>],</span><br><span class="line">  <span class="comment">// 转换前的所有变量名和属性名</span></span><br><span class="line">  names: [<span class="string">&quot;src&quot;</span>, <span class="string">&quot;maps&quot;</span>, <span class="string">&quot;are&quot;</span>, <span class="string">&quot;fun&quot;</span>],</span><br><span class="line">  <span class="comment">// 记录位置信息的字符串，也是实际上进行转换的映射信息</span></span><br><span class="line">  mappings: <span class="string">&quot;AAgBC,SAAQ,CAAEA&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Source-Map-对象的-mappings-属性"><a href="#Source-Map-对象的-mappings-属性" class="headerlink" title="Source Map 对象的 mappings 属性"></a>Source Map 对象的 mappings 属性</h3><p>mappings 属性仅包含一段字符串。里面的内容需要进行层次划分来达到，横纵坐标转换。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  ...</span><br><span class="line">  mappings: <span class="string">&quot;AAgBC,SAAQ,CAAEA&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>分隔符有：（;）分号（,）逗号（总共两种）</p>
+<p>第一次分割是用（;）分号，对应压缩后的<strong>行数</strong>（压缩目的是节省，所以压缩后大多为一行，也会出现多行的情况，但总是从第一行开始，前面不会有空行）第一行的内容结束，分号隔开，接上第二行</p>
+<p>第二次分割使用（,）逗号，对应压缩后的<strong>位置</strong>。通常一个报错信息会指出一个错误开始的地方，开始的地方到语句结束的地方就叫一个位置。(注意：这一层不表示压缩后的对应列数，仅大概位置)</p>
+<p>最后分割为一段字符串单位后，就进行<strong>位置转换</strong>了。</p>
+<p>如 <code>AAgBC</code> 这样的字符串，是按照 VLQ 编码（Variable-length Quantity）表示的，表示该位置对应的转换前的源码位置。</p>
+<h3 id="VLQ-编码"><a href="#VLQ-编码" class="headerlink" title="VLQ 编码"></a>VLQ 编码</h3><p>VLQ 编码字段通常有 5 个字符（4 个字符、6 个字符）</p>
+<ul>
+<li>从左边算起:<ol>
+<li>第一位表示这个位置在<strong>压缩后</strong>的代码的<strong>第几列</strong></li>
+<li>第二位表示这个位置属于 <code>sources属性</code> 中的哪一个<strong>文件</strong></li>
+<li>第三位表示这个位置属于转换前代码的第<strong>几行</strong></li>
+<li>第四位表示这个位置属于转换前代码的第<strong>几列</strong></li>
+<li>第五位表示这个位置属于 <code>names属性</code>中的哪一个<strong>变量</strong></li>
+</ol>
+</li>
+</ul>
+<p>由于每个字符使用 6 个两进制位，所以字段内容的对应值与 Base64 相似，具体的对应参数可以查阅 <a class="link"   target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Variable-length_quantity" >VLQ 编码<i class="fas fa-external-link-alt"></i></a></p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/2022/04/26/Source%20Map/bg2013012202.png"
+                      class="" title="img"
+                >
+
+        </div>
+
+        
+
+        
+            <ul class="post-tags-box">
+                
+                    <li class="tag-item">
+                        <a href="/tags/%E7%AC%94%E8%AE%B0/">#笔记</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2022/10/05/%E5%9F%BA%E4%BA%8E%E8%BD%AF%E5%BC%95%E7%94%A8+Map%E5%AE%9E%E7%8E%B0Java%E7%BC%93%E5%AD%98/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">基于软引用+Map实现Java缓存</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2022/02/03/%E4%BD%BF%E7%94%A8%E6%B3%A8%E8%A7%A3%E5%AE%9E%E7%8E%B0%E6%95%B0%E6%8D%AE%E5%AD%97%E5%85%B8%E7%BF%BB%E8%AF%91/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">使用注解实现数据字典翻译</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>
+              -
+            
+            2024&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">arminzheng</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+            </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">简述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%BA%90%E7%A0%81%E8%BD%AC%E6%8D%A2"><span class="nav-number">2.</span> <span class="nav-text">源码转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Source-Map-%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F"><span class="nav-number">3.</span> <span class="nav-text">Source Map 文件格式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Source-Map-%E5%AF%B9%E8%B1%A1%E7%9A%84-mappings-%E5%B1%9E%E6%80%A7"><span class="nav-number">3.1.</span> <span class="nav-text">Source Map 对象的 mappings 属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VLQ-%E7%BC%96%E7%A0%81"><span class="nav-number">3.2.</span> <span class="nav-text">VLQ 编码</span></a></li></ol></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+
+    
+<script src="/js/code-copy.js"></script>
+
+
+
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+<div class="post-scripts pjax">
+    
+        
+<script src="/js/left-side-toggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/toc.js"></script>
+
+    
+</div>
+
+
+    
+<script src="/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="arminzheng">
+    
+    <title>
+        
+            互联网协议 |
+        
+        Armin&#39;s Blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/favicon.ico">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"arminzheng.com","root":"/","language":"en","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/1000.jpg","favicon":"/favicon.ico","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"Keep moving, don't settle."},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":false}}},"local_search":{"enable":true,"preload":false},"code_copy":{"enable":true,"style":"mac"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"3.4.3"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                Armin&#39;s Blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                TAGS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               target="_blank" rel="noopener" href="https://daily.arminzheng.com"
+                            >
+                                WALLPAPER
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                LINKS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                ABOUT
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">TAGS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       target="_blank" rel="noopener" href="https://daily.arminzheng.com">WALLPAPER</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">LINKS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">ABOUT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">互联网协议</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/1000.jpg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">arminzheng</span>
+                        
+                            <span class="author-label">Lv2</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;
+        <span class="pc">2020-08-08 00:00:00</span>
+        <span class="mobile">2020-08-08 00:00</span>
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/study/">study</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>1.8k Words</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>6 Mins</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h4 id="总体思路"><a href="#总体思路" class="headerlink" title="总体思路"></a>总体思路</h4><ul>
+<li><p>网络接口层</p>
+<ul>
+<li>0、1 电信号</li>
+<li>以太网协议</li>
+<li>帧 Frame（以太数据包）:<ul>
+<li>标头 head 18 B （头部 14 + 尾部：冗余校验码 FCS 4）Frame check sequence<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img-blog.csdnimg.cn/20210422230342452.png"
+                      alt="以太帧结构（格式）"
+                ></li>
+<li>数据 data 46 ~ 1500 B （数据很长就分多个帧）（总共 64 ~ 1518 B）</li>
+<li>前同步码：用来使接收端的适配器在接收 MAC 帧时能够迅速调整时钟频率，使它和发送端的频率相同。前同步码为 7 个字节，1 和 0 交替。</li>
+<li>帧开始定界符：帧的起始符，为 1 个字节。前 6 位 1 和 0 交替，最后的两个连续的 1 表示告诉接收端适配器：“帧信息要来了，准备接收”。</li>
+</ul>
+</li>
+<li>MAC 地址：48 位 = 6 B = 12 个十六进制数表示（6 对），前 6 个十六进制（3 对）是厂家编号，后 6 个（3 对）是该厂家的网卡流水号（用来定位网卡和数据包的路径）</li>
+<li>ARP 协议：网卡知道网卡的 MAC 地址<ul>
+<li>所查询主机的 IP，在对方 MAC 地址一栏填的是 FF:FF:FF:FF，表示这是一个广播</li>
+<li>它所在子网络的每一台主机，都会收到这个数据包，从中取出 IP 地址，与自身的 IP 地址进行比较。如果两者相同，都做出回复，向对方报告自己的 MAC 地址，否则就丢弃这个包。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>网络层</p>
+<ul>
+<li>网络地址（子网络）</li>
+<li>IP 协议（32 位）<ul>
+<li>子网掩码（ip AND 掩码 == 网络部分）</li>
+</ul>
+</li>
+<li>IP 数据包<ul>
+<li>Head: 20~60</li>
+<li>Data: 65535 - Head</li>
+<li>标头和数据放进帧的数据里面（可以分多个帧）</li>
+</ul>
+</li>
+<li><strong>“网络层”的功能是建立”主机到主机”的通信。</strong></li>
+</ul>
+</li>
+<li><p>传输层</p>
+<ul>
+<li><p>端口：不管是浏览网页还是在线聊天，应用程序会随机选用一个端口，然后与服务器的相应端口联系。</p>
+</li>
+<li><p><strong>“传输层”的功能，就是建立”端口到端口”的通信。</strong></p>
+</li>
+<li><p><strong>只要确定主机和端口，我们就能实现程序之间的交流。</strong>主机+端口，叫做”套接字”（socket）。</p>
+</li>
+<li><p>UDP 协议</p>
+<ul>
+<li>UDP 数据包，也是由”标头”和”数据”两部分组成。</li>
+<li>“标头”部分主要定义了发出端口和接收端口 8 字节 Bit</li>
+<li>“数据”部分就是具体的内容。总长度不超过 65535 字节 Bit</li>
+</ul>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://www.ruanyifeng.com/blogimg/asset/201205/bg2012052912.png"
+                      alt="img"
+                ></p>
+<ul>
+<li>以太数据包 头 + IP 数据包 头 + UDP 数据包 头</li>
+</ul>
+</li>
+<li><p>TCP 协议</p>
+<ul>
+<li>有确认机制的 UDP 协议，每发出一个数据包都要求确认。如果有一个数据包遗失，就收不到确认，发出方就知道有必要重发这个数据包了。</li>
+<li>TCP 数据包和 UDP 数据包一样，都是内嵌在 IP 数据包的”数据”部分。TCP 数据包没有长度限制，理论上可以无限长，但是为了保证网络的效率，通常 TCP 数据包的长度不会超过 IP 数据包的长度，以确保单个 TCP 数据包不必再分割。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>应用层</p>
+<ul>
+<li>TCP 协议可以为各种各样的程序传递数据，比如 Email、WWW、FTP 等等。那么，必须有不同协议规定电子邮件、网页、FTP 数据的格式，这些应用程序协议就构成了”应用层”。<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://www.ruanyifeng.com/blogimg/asset/201205/bg2012052913.png"
+                      alt="img"
+                ></li>
+</ul>
+</li>
+</ul>
+<h4 id="用户角度"><a href="#用户角度" class="headerlink" title="用户角度"></a>用户角度</h4><ul>
+<li><p>以太网标头需要知道：</p>
+<ul>
+<li>对方的 MAC 地址</li>
+<li>对方的 IP 地址</li>
+</ul>
+</li>
+<li><p>但不在同一子网，无法知道对方 MAC 地址，必须通过 Gateway 网关转发</p>
+</li>
+<li><p>上网设置</p>
+<ul>
+<li>静态 IP 地址<ul>
+<li>本机的 IP 地址<br>　　* 子网掩码<ul>
+<li>网关的 IP 地址</li>
+<li>DNS 的 IP 地址</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>动态 IP 地址<ul>
+<li>DHCP 协议（应用层协议）<ul>
+<li>不知道对面的 MAC 地址：就设置对方 MAC 地址为广播地址（FF-FF-FF-FF-FF-FF）</li>
+<li>我方对方的 IP 地址都不知道：就设置我方：0.0.0.0；对方 255.255.255.255</li>
+<li>双方端口：协议规定好了，我方：68，对方：67</li>
+<li>由于 MAC 地址是广播，每个都收到，但 IP 地址是 0….、255….DHCP 知道 ”这是发给我的“ ，其他计算机都丢弃。</li>
+<li>DHCP 服务器读出数据，分配好 IP，发回一个 DHCP 响应包<ul>
+<li>结构为：以太网标头的 MAC 地址是双方的网卡地址，IP 标头的 IP 地址是 DHCP 服务器的 IP 地址（发出方）和 255.255.255.255（接收方），UDP 标头的端口是 67（发出方）和 68（接收方），分配给请求端的 IP 地址和本网络的具体参数则包含在 Data 部分。</li>
+<li>计算机收到响应包，就知道了自己的 IP 地址、子网掩码、网关地址、DNS 服务器等参数。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>实例：访问一个网站</p>
+<ul>
+<li><p>DNS 协议：已知 DNS 服务器为 8.8.8.8，于是我们向这个地址发送一个 DNS 数据包，53 端口。网址会转换为 IP 地址，得到响应，我们就知道对方的 IP 地址。</p>
+</li>
+<li><p>子网掩码，判断是否为一个网段，不为一个网段，就必须通过网关的转发，于是接收方 MAC 地址将是本机网关的 MAC 地址。</p>
+</li>
+<li><p>应用层协议：HTTP 协议。请求头请求体等，假定长度为 4960 字节，将会被嵌入到 TCP 数据包中。</p>
+</li>
+<li><p>TCP 协议：接收方默认端口为 80 端口，本机端口是一个随机生成的 1024~65535 之间的整数，假定为 51755。加入一个 TCP 数据包 20 字节，总大小+20，4980 字节</p>
+</li>
+<li><p>IP 协议：TCP 数据包嵌入 IP 数据包，会设置双方 IP 地址。IP 数据包的标头长度为 20 字节，加上嵌入的 TCP 数据包，总长度变为 5000 字节。</p>
+</li>
+<li><p>以太网协议：IP 数据包嵌入以太数据包，需要设置 MAC 地址，设置本机 MAC 地址，接收方设置为网关 192.168.1.1 的 MAC 地址（通过 ARP 协议得到，也就是广播获得的 MAC 地址）<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://www.ruanyifeng.com/blogimg/asset/201206/bg2012061107.png"
+                      alt="image"
+                ></p>
+</li>
+<li><p>服务端响应</p>
+<ul>
+<li>通过多个网关转发，网站服务器收到 4 个以太网数据包。</li>
+<li>根据 IP 标头的序号，将 4 个包拼起来，读取出完整的 TCP 数据包，读出请求，作出响应，再用 TCP 协议发回来。</li>
+<li>本机收到响应后，就可以将网页显示出来了，通信完成。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/2020/08/08/%E4%BA%92%E8%81%94%E7%BD%91%E5%8D%8F%E8%AE%AE/transform.png"
+                      class="" title="传输"
+                >
+
+<h4 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h4><ul>
+<li>SYN(synchronous 建立连接) （标志位 1 bit） 最后一次握手 SYN 不为 1 是不消耗序号的</li>
+<li>ACK(acknowledgement 确认)</li>
+<li>PSH(push 传送)</li>
+<li>FIN(finish 结束)</li>
+<li>RST(reset 重置)</li>
+<li>URG(urgent 紧急)</li>
+</ul>
+<p>以上是标志位</p>
+<hr>
+<p>以下是序号和确认号</p>
+<ul>
+<li>Sequence number (seq 序号)</li>
+<li>Acknowledge number (AN 确认号) 是对方的序号。如果占用己方序号和对方确认号都加一</li>
+<li>ack 确认报文段不占用<strong>序号</strong>，只有三种情况需要占用<ul>
+<li>1、syn=1</li>
+<li>2、fin=1</li>
+<li>3、携带数据一个字节占用一个序号</li>
+</ul>
+</li>
+<li>序号和确认号是相对的，seq 表示上次发送的数据量，an 代表上次接收的数据量（都是累加还算上初始值）</li>
+<li>[ip 首部 + ip 数据部分{ tcp 首部 + 数据部分 } ]</li>
+<li>ip 数据部分包含 tcp 包（8位倍数的可选项，如果未达到 32 则进行填充）</li>
+</ul>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/2020/08/08/%E4%BA%92%E8%81%94%E7%BD%91%E5%8D%8F%E8%AE%AE/%E6%A0%BC%E5%BC%8F.png"
+                      class="" title="TCP包结构图"
+                >
+
+<hr>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img-blog.csdnimg.cn/20181125120454105.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2EyOTg4YQ==,size_16,color_FFFFFF,t_70"
+                      alt="img"
+                ></p>
+
+        </div>
+
+        
+
+        
+            <ul class="post-tags-box">
+                
+                    <li class="tag-item">
+                        <a href="/tags/%E7%AC%94%E8%AE%B0/">#笔记</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2021/08/18/Gallery/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Gallery</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2020/08/08/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">函数式编程</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>
+              -
+            
+            2024&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">arminzheng</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+            </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%BB%E4%BD%93%E6%80%9D%E8%B7%AF"><span class="nav-number">1.</span> <span class="nav-text">总体思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E8%A7%92%E5%BA%A6"><span class="nav-number">2.</span> <span class="nav-text">用户角度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B"><span class="nav-number">3.</span> <span class="nav-text">三次握手</span></a></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+
+    
+<script src="/js/code-copy.js"></script>
+
+
+
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+<div class="post-scripts pjax">
+    
+        
+<script src="/js/left-side-toggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/toc.js"></script>
+
+    
+</div>
+
+
+    
+<script src="/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>
